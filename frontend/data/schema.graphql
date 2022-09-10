@@ -28,6 +28,8 @@ type LoginPayload {
 }
 
 type Mutation {
+  authorizeAuthSession(id: ID!): Boolean!
+  createAuthSession: String!
   login(input: LoginInput!): MutationLoginResult!
   signup(input: SignupInput!): MutationSignupResult!
 }
@@ -63,6 +65,10 @@ input SignupInput {
 type SignupPayload {
   token: String!
   user: Account!
+}
+
+type Subscription {
+  authSession(id: ID!): String!
 }
 
 type UserExistError implements Error {

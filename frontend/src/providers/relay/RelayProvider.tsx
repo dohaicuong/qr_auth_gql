@@ -1,5 +1,5 @@
 import { RelayEnvironmentProvider } from 'react-relay'
-import { environment } from './environment'
+import { RelayEnvironment } from './RelayEnvironment'
 
 export type RelayProviderProps = {
   children?: React.ReactNode
@@ -7,7 +7,7 @@ export type RelayProviderProps = {
 
 export const RelayProvider: React.FC<RelayProviderProps> = ({ children }) => {
   return (
-    <RelayEnvironmentProvider environment={environment}>
+    <RelayEnvironmentProvider environment={RelayEnvironment}>
       {children}
     </RelayEnvironmentProvider>
   )
