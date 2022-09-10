@@ -61,7 +61,10 @@ export const LoginForm: React.FC<LoginFormProps> = ({
           {...register('password')}
         />
         <Typography style={{ marginTop: 4 }} variant='subtitle2'>
-          <Link component={RouterLink} to={forgotPasswordPath}>
+          <Link
+            // component={RouterLink}
+            // to={forgotPasswordPath}
+          >
             Forgot your password
           </Link>
         </Typography>

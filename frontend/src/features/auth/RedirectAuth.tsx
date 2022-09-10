@@ -1,13 +1,12 @@
 import { Navigate, Outlet } from 'react-router-dom'
-import { useIsLoggedIn } from '.'
 
 type RedirectAuthProps = {
   to: string
 }
 export const RedirectAuth: React.FC<RedirectAuthProps> = ({ to }) => {
-  const isLoggedIn = useIsLoggedIn()
+  const jwt = localStorage.getItem('jwt')
 
-  if (isLoggedIn) return <Navigate to={to} replace />
+  if (jwt) return <Navigate to={to} replace />
 
   return <Outlet />
 }

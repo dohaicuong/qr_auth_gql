@@ -1,10 +1,4 @@
-import { useCallback, useMemo } from 'react'
-
-export const useIsLoggedIn = () => {
-  const token = localStorage.getItem('jwt')
-
-  return Boolean(token)
-}
+import { useCallback } from 'react'
 
 export const useLocalLogin = () => {
   return useCallback(
