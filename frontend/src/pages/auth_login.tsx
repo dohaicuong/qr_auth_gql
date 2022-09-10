@@ -7,10 +7,12 @@ import { LoginForm } from '@/features/auth/login/LoginForm'
 import { PayloadError } from 'relay-runtime'
 
 import { QrLogin } from '@/features/auth/qr_login/QrLogin'
+import { useLocalLogin } from '@/features/auth'
 
 const LoginPage = () => {
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
+  const localLogin = useLocalLogin()
   
   const onLoginError = (errors: PayloadError[]) => {
     errors.forEach(error => enqueueSnackbar(error.message, { variant: 'error' }))
@@ -26,14 +28,14 @@ const LoginPage = () => {
       case 'MutationLoginSuccess':
         const { token, user } = login.data
         enqueueSnackbar(`Welcome ${user.username}!`, { variant: 'success' })
-        localStorage.setItem('jwt', token)
+        localLogin(token)
         navigate('/')
         break
     }
   }
 
   const onJwtToken = (token: string) => {
-    localStorage.setItem('jwt', token)
+    localLogin(token)
     navigate('/')
   }
 

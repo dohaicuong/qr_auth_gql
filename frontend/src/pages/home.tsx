@@ -7,6 +7,8 @@ import { Button, Container, Paper, Stack, TextField, Typography } from '@mui/mat
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { homeAuthorizeSessionMutation } from './__generated__/homeAuthorizeSessionMutation.graphql'
 import { useAuthorizeSession } from '@/features/auth/qr_login/useAuthorizeSession'
+import { useLocalLogout } from '@/features/auth'
+import { useNavigate } from 'react-router-dom'
 
 type Input = {
   id: string
@@ -24,7 +26,7 @@ const HomePage = () => {
     `,
     {}
   )
-
+  
   const [authorizeSessionMutate, authorizingSession] = useAuthorizeSession()
   const [qrData, setQrData] = useState<string>()
   const { register, handleSubmit, setValue } = useForm<Input>()
@@ -38,12 +40,23 @@ const HomePage = () => {
     variables: { id: data.id }
   })
 
+  const localLogout = useLocalLogout()
+  const navigate = useNavigate()
+  const onLogout = () => {
+    localLogout()
+    navigate('/auth')
+  }
+
   return (
     <Container maxWidth='xs'>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
           <Typography variant='h3'>home page</Typography>
-          <Typography variant='body1'>User: {data.me?.username}</Typography>
+          <Stack direction='row' spacing={2}>
+            <Typography variant='body1'>User: {data.me?.username}</Typography>
+            <Button onClick={onLogout} variant='contained'>Sign out</Button>
+          </Stack>
+
           <Typography>
             Login your device with QR code
           </Typography>
