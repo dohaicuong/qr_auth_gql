@@ -1,0 +1,8 @@
+{
+  "01393815a8d08b9e10661caac24c196b": "mutation useSignupMutation(\n  $input: SignupInput!\n) {\n  signup(input: $input) {\n    __typename\n    ... on UserExistError {\n      message\n    }\n    ... on MutationSignupSuccess {\n      data {\n        token\n        user {\n          username\n          id\n        }\n      }\n    }\n  }\n}\n",
+  "1e58ab8ead67275b9043bb7e6c287f62": "query homeQuery {\n  me {\n    id\n    username\n  }\n}\n",
+  "30537c7a28e3220d52d7cf51fd872361": "subscription useAuthSessionTokenSubscription(\n  $id: ID!\n) {\n  authSession(id: $id)\n}\n",
+  "b34af49a964182ff6af7f7e511f9088a": "mutation useCreateAuthSessionMutation {\n  createAuthSession\n}\n",
+  "b91bdcbadc05cc7fdea6dba281cd5679": "mutation useAuthorizeSessionMutation(\n  $id: ID!\n) {\n  authorizeAuthSession(id: $id)\n}\n",
+  "cdafeb7b0992d8f2091e07fd68287edd": "mutation useLoginMutation(\n  $input: LoginInput!\n) {\n  login(input: $input) {\n    __typename\n    ... on WrongCredentialsError {\n      message\n    }\n    ... on MutationLoginSuccess {\n      data {\n        token\n        user {\n          username\n          id\n        }\n      }\n    }\n  }\n}\n"
+}

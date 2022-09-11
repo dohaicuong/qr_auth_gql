@@ -1,5 +1,6 @@
 /**
- * @generated SignedSource<<02ed285242a4f6381427594a6062678b>>
+ * @generated SignedSource<<be51f544040b6c8f0c32a838e4ae56c4>>
+ * @relayHash cdafeb7b0992d8f2091e07fd68287edd
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -7,6 +8,8 @@
 /* tslint:disable */
 /* eslint-disable */
 // @ts-nocheck
+
+// @relayRequestID cdafeb7b0992d8f2091e07fd68287edd
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type LoginInput = {
@@ -204,12 +207,11 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cdafeb7b0992d8f2091e07fd68287edd",
-    "id": null,
+    "id": "cdafeb7b0992d8f2091e07fd68287edd",
     "metadata": {},
     "name": "useLoginMutation",
     "operationKind": "mutation",
-    "text": "mutation useLoginMutation(\n  $input: LoginInput!\n) {\n  login(input: $input) {\n    __typename\n    ... on WrongCredentialsError {\n      message\n    }\n    ... on MutationLoginSuccess {\n      data {\n        token\n        user {\n          username\n          id\n        }\n      }\n    }\n  }\n}\n"
+    "text": null
   }
 };
 })();

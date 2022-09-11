@@ -5,7 +5,8 @@ const defaultTheme = createTheme()
 export const theme = createTheme({
   palette: {
     mode: 'dark',
-    primary: { main: '#5865F2' }
+    primary: { main: '#5865F2' },
+    secondary: { main: 'hsl(139, 47.3%, 43.9%)' }
   },
   components: {
     MuiButton: {

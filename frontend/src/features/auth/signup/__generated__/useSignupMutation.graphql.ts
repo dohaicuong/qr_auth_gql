@@ -1,5 +1,6 @@
 /**
- * @generated SignedSource<<be95fcb7b76453ac85e4b2b09790726f>>
+ * @generated SignedSource<<288ccc6109478d9608f2a27968585fb6>>
+ * @relayHash 01393815a8d08b9e10661caac24c196b
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -7,6 +8,8 @@
 /* tslint:disable */
 /* eslint-disable */
 // @ts-nocheck
+
+// @relayRequestID 01393815a8d08b9e10661caac24c196b
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SignupInput = {
@@ -204,12 +207,11 @@ return {
     ]
   },
   "params": {
-    "cacheID": "01393815a8d08b9e10661caac24c196b",
-    "id": null,
+    "id": "01393815a8d08b9e10661caac24c196b",
     "metadata": {},
     "name": "useSignupMutation",
     "operationKind": "mutation",
-    "text": "mutation useSignupMutation(\n  $input: SignupInput!\n) {\n  signup(input: $input) {\n    __typename\n    ... on UserExistError {\n      message\n    }\n    ... on MutationSignupSuccess {\n      data {\n        token\n        user {\n          username\n          id\n        }\n      }\n    }\n  }\n}\n"
+    "text": null
   }
 };
 })();

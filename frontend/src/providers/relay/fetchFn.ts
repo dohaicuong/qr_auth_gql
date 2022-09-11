@@ -12,7 +12,7 @@ export const fetchFn: FetchFunction = async (request, variables) => {
       ...(token ? { authorization: `Bearer ${token}` } : {})
     },
     body: JSON.stringify({
-      query: request.text,
+      query: request.text || request.id,
       variables,
     }),
   })

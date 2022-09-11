@@ -1,5 +1,6 @@
 /**
- * @generated SignedSource<<b5d050d996f9516dc13aa8a8a37df392>>
+ * @generated SignedSource<<1ed5616ef412b126ff1bc25fd22a467c>>
+ * @relayHash 30537c7a28e3220d52d7cf51fd872361
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -7,6 +8,8 @@
 /* tslint:disable */
 /* eslint-disable */
 // @ts-nocheck
+
+// @relayRequestID 30537c7a28e3220d52d7cf51fd872361
 
 import { ConcreteRequest, GraphQLSubscription } from 'relay-runtime';
 export type useAuthSessionTokenSubscription$variables = {
@@ -61,12 +64,11 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "30537c7a28e3220d52d7cf51fd872361",
-    "id": null,
+    "id": "30537c7a28e3220d52d7cf51fd872361",
     "metadata": {},
     "name": "useAuthSessionTokenSubscription",
     "operationKind": "subscription",
-    "text": "subscription useAuthSessionTokenSubscription(\n  $id: ID!\n) {\n  authSession(id: $id)\n}\n"
+    "text": null
   }
 };
 })();

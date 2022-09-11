@@ -1,5 +1,6 @@
 /**
- * @generated SignedSource<<32cdb230f6c5f80f3b6f23b313f82edd>>
+ * @generated SignedSource<<b8961de482e5ce07397bed82817f38d6>>
+ * @relayHash b34af49a964182ff6af7f7e511f9088a
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -7,6 +8,8 @@
 /* tslint:disable */
 /* eslint-disable */
 // @ts-nocheck
+
+// @relayRequestID b34af49a964182ff6af7f7e511f9088a
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type useCreateAuthSessionMutation$variables = {};
@@ -46,12 +49,11 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "b34af49a964182ff6af7f7e511f9088a",
-    "id": null,
+    "id": "b34af49a964182ff6af7f7e511f9088a",
     "metadata": {},
     "name": "useCreateAuthSessionMutation",
     "operationKind": "mutation",
-    "text": "mutation useCreateAuthSessionMutation {\n  createAuthSession\n}\n"
+    "text": null
   }
 };
 })();

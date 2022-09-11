@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.4",
+    "clsx": "^1.2.1",
     "graphql": "^16.6.0",
     "notistack": "^2.0.5",
     "qrcode.react": "^3.1.0",
@@ -52,6 +53,10 @@
       "**/__generated__/**"
     ],
     "eagerEsModules": true,
-    "noFutureProofEnums": true
+    "noFutureProofEnums": true,
+    "persistConfig": {
+      "file": "./data/persisted_queries.json",
+      "algorithm": "MD5"
+    }
   }
 }

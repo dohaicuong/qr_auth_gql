@@ -6,13 +6,14 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { ThemeProvider } from './providers/theme/ThemeProvider'
 import { SnackbarProvider } from 'notistack'
 
-import { RedirectUnauth } from './features/auth/RedirectUnauth'
 import { RedirectAuth } from './features/auth/RedirectAuth'
 import LoginPage from './pages/auth_login'
 import SignupPage from './pages/auth_signup'
 import HomePage from './pages/home'
 
 import { animated, useTransition } from 'react-spring'
+import { AuthedAppLayout } from './features/auth/AuthedAppLayout'
+import QRScanPage from './pages/qr_scan'
 
 export const AppRoot = () => (
   <RelayProvider>
@@ -29,9 +30,6 @@ export const AppRoot = () => (
 const Routing = () => {
   const location = useLocation()
   const transitions = useTransition(location.pathname, {
-    // from: { transform: 'translate3d(100%,0,0)' },
-    // enter: { transform: 'translate3d(0%,0,0)' },
-    // leave: { transform: 'translate3d(-50%,0,0)' },
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
@@ -42,8 +40,9 @@ const Routing = () => {
       <Suspense fallback='Loading...'>
         <animated.div style={props}>
           <Routes location={item}>
-            <Route path='/' element={<RedirectUnauth to='/auth' />}>
+            <Route path='/' element={<AuthedAppLayout to='/auth' />}>
               <Route index element={<HomePage />} />
+              <Route path='qr-scan' element={<QRScanPage />} />
             </Route>
             <Route path='/auth' element={<RedirectAuth to='/' />}>
               <Route index element={<LoginPage />} />
