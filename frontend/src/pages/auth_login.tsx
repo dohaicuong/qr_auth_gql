@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useSnackbar } from 'notistack'
-import { CircularProgress, Container, Grid, Paper, Typography } from '@mui/material'
+import { Container, Grid, Paper, Typography } from '@mui/material'
 
 import { useLoginMutation$data } from '@/features/auth/login/__generated__/useLoginMutation.graphql'
 import { LoginForm } from '@/features/auth/login/LoginForm'

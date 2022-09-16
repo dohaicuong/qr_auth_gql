@@ -30,7 +30,6 @@ const relay: PluginOption = {
   },
 }
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [relay, react()],
   resolve: {

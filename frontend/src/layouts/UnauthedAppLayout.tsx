@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from 'react-router-dom'
 
-type UnauthedLayoutProps = {
+type UnauthedAppLayoutProps = {
   authed_redirect_to: string
 }
-export const UnauthedLayout: React.FC<UnauthedLayoutProps> = ({ authed_redirect_to }) => {
+export const UnauthedAppLayout: React.FC<UnauthedAppLayoutProps> = ({ authed_redirect_to }) => {
   const jwt = localStorage.getItem('jwt')
 
   if (jwt) return <Navigate to={authed_redirect_to} replace />

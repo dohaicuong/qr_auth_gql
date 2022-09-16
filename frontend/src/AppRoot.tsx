@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { RelayProvider } from './providers/relay/RelayProvider'
@@ -7,14 +7,15 @@ import { ThemeProvider } from './providers/theme/ThemeProvider'
 import { SnackbarProvider } from 'notistack'
 import { animated, useTransition } from 'react-spring'
 
-import { UnauthedLayout } from './layouts/UnauthedLayout'
-import LoginPage from './pages/auth_login'
-import SignupPage from './pages/auth_signup'
-
 import { AuthedAppLayout } from './layouts/AuthedAppLayout'
-import HomePage from './pages/home'
-import QRScanPage from './pages/qr_scan'
-import TodoListPage from './pages/todo_list'
+import { UnauthedAppLayout } from './layouts/UnauthedAppLayout'
+
+const LoginPage = lazy(() => import('./pages/auth_login'))
+const SignupPage = lazy(() => import('./pages/auth_signup'))
+
+const HomePage = lazy(() => import('./pages/home'))
+const QRScanPage = lazy(() => import('./pages/qr_scan'))
+const TodoListPage = lazy(() => import('./pages/todo_list'))
 
 export const AppRoot = () => (
   <RelayProvider>
@@ -46,7 +47,7 @@ const Routing = () => {
               <Route path='qr-scan' element={<QRScanPage />} />
               <Route path='tasks' element={<TodoListPage />} />
             </Route>
-            <Route path='/auth' element={<UnauthedLayout authed_redirect_to='/' />}>
+            <Route path='/auth' element={<UnauthedAppLayout authed_redirect_to='/' />}>
               <Route index element={<LoginPage />} />
               <Route path='signup' element={<SignupPage />} />
             </Route>
