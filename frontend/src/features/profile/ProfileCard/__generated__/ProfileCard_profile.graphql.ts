@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<aec92dfa1bd64c366ddce2654ffc5b35>>
+ * @generated SignedSource<<c0dbfcb84382ffa873936e6982d552d4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,10 +10,11 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
+import profileAgeResolver from "../../../../providers/relay/resolvers/ProfileAgeResolver.ts";
 export type ProfileCard_profile$data = {
+  readonly age: ReturnType<typeof profileAgeResolver> | null;
   readonly avatar: string;
   readonly description: string | null;
-  readonly dob: any;
   readonly name: string;
   readonly title: string | null;
   readonly " $fragmentSpreads": FragmentRefs<"ProfileEditDialog_profile">;
@@ -23,6 +24,8 @@ export type ProfileCard_profile$key = {
   readonly " $data"?: ProfileCard_profile$data;
   readonly " $fragmentSpreads": FragmentRefs<"ProfileCard_profile">;
 };
+
+import ProfileAgeResolver from './../../../../providers/relay/resolvers/ProfileAgeResolver';
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
@@ -48,13 +51,6 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "dob",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
       "name": "title",
       "storageKey": null
     },
@@ -66,6 +62,19 @@ const node: ReaderFragment = {
       "storageKey": null
     },
     {
+      "alias": null,
+      "args": null,
+      "fragment": {
+        "args": null,
+        "kind": "FragmentSpread",
+        "name": "ProfileAgeResolver"
+      },
+      "kind": "RelayResolver",
+      "name": "age",
+      "resolverModule": ProfileAgeResolver,
+      "path": "age"
+    },
+    {
       "args": null,
       "kind": "FragmentSpread",
       "name": "ProfileEditDialog_profile"
@@ -75,6 +84,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "22b86d33bddf2d5350f2fec2fb8b1d82";
+(node as any).hash = "567d31b7537130cddd281ebbde610f08";
 
 export default node;

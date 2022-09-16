@@ -16,9 +16,9 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ profileRef }) => {
       fragment ProfileCard_profile on Profile {
         name
         avatar
-        dob
         title
         description
+        age
         ...ProfileEditDialog_profile
       }
     `,
@@ -57,7 +57,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ profileRef }) => {
           {profile.name}
         </Typography>
         <Typography align='center' variant='body2'>
-          {profile.title || 'Title'} - {new Date(profile.dob).getFullYear()}
+          {profile.title || 'Title'} - {profile.age}
         </Typography>
         <TextField
           disabled

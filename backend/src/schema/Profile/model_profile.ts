@@ -1,6 +1,4 @@
 import { builder } from '../builder'
-import { Account } from '../Account/model_account'
-import { prisma } from '../../clients/prisma'
 
 export const Profile = builder.prismaNode('Profile', {
   findUnique: id => ({ id }),
@@ -15,10 +13,5 @@ export const Profile = builder.prismaNode('Profile', {
     updatedAt: t.expose('updatedAt', { type: 'DateTime' }),
     
     accountId: t.exposeString('accountId'),
-    // age: t.int({
-    //   resolve: (profile) => {
-    //     return new Date().getFullYear() - new Date(profile.dob).getFullYear()
-    //   }
-    // }),
   })
 })

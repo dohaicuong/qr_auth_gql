@@ -3,9 +3,12 @@ import {
   Network,
   RecordSource,
   Store,
+  RelayFeatureFlags
 } from 'relay-runtime'
 import { fetchFn } from './fetchFn'
 import { subscribeFn } from './subscribeFn'
+
+RelayFeatureFlags.ENABLE_RELAY_RESOLVERS = true
 
 export const source = new RecordSource()
 const store = new Store(source)

@@ -1,6 +1,6 @@
 /**
- * @generated SignedSource<<84620208d0af9c4ff972793e403da4c5>>
- * @relayHash 9f010953511bf9b2630ee7c9ffabb37a
+ * @generated SignedSource<<c7921bdbdbec9597f1d318a2cb9352d9>>
+ * @relayHash ddbec74862e5bac3f3dd709aa6c27064
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-// @relayRequestID 9f010953511bf9b2630ee7c9ffabb37a
+// @relayRequestID ddbec74862e5bac3f3dd709aa6c27064
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
@@ -171,13 +171,6 @@ return {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
-                        "name": "dob",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
                         "name": "title",
                         "storageKey": null
                       },
@@ -186,6 +179,13 @@ return {
                         "args": null,
                         "kind": "ScalarField",
                         "name": "description",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "dob",
                         "storageKey": null
                       },
                       {
@@ -211,7 +211,7 @@ return {
     ]
   },
   "params": {
-    "id": "9f010953511bf9b2630ee7c9ffabb37a",
+    "id": "ddbec74862e5bac3f3dd709aa6c27064",
     "metadata": {},
     "name": "useUpdateProfileMutation",
     "operationKind": "mutation",

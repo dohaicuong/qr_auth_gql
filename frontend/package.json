@@ -8,7 +8,8 @@
     "build": "relay-compiler --validate && tsc && vite build",
     "preview": "vite preview",
     "schema": "get-graphql-schema http://localhost:4000/graphql > ./data/schema.graphql",
-    "relay": "relay-compiler"
+    "relay": "relay-compiler && pnpm mod:resolvers",
+    "mod:resolvers": "node ./scripts/resolver_import_artifact.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.19.0",
     "@types/babel__core": "^7.1.19",
+    "@types/node": "^18.7.15",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/react-relay": "14.1.1",
@@ -41,6 +43,7 @@
     "@vitejs/plugin-react": "^2.1.0",
     "babel-plugin-relay": "14.1.0",
     "get-graphql-schema": "^2.1.2",
+    "glob": "^8.0.3",
     "relay-compiler": "14.1.0",
     "typescript": "^4.6.4",
     "vite": "^3.1.0"
@@ -59,6 +62,12 @@
     "persistConfig": {
       "file": "./data/persisted_queries.json",
       "algorithm": "MD5"
+    },
+    "featureFlags": {
+      "enable_relay_resolver_transform": true,
+      "enable_client_edges": {
+        "kind": "enabled"
+      }
     }
   }
 }
