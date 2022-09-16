@@ -23,6 +23,7 @@
     "@swc/helpers": "^0.4.11",
     "bcrypt": "^5.0.1",
     "graphql": "^16.6.0",
+    "graphql-scalars": "^1.18.0",
     "jsonwebtoken": "^8.5.1",
     "node-dev": "^7.4.3",
     "prisma": "^4.3.1",

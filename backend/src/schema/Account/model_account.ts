@@ -5,5 +5,7 @@ export const Account = builder.prismaNode('Account', {
   id: { resolve: user => user.id },
   fields: t => ({
     username: t.exposeString('username'),
+
+    profile: t.relation('profile', { nullable: true })
   })
 })

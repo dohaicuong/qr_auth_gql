@@ -6,6 +6,7 @@ export type CircularButtonProps = React.HtmlHTMLAttributes<HTMLButtonElement> & 
   image?: string | JSX.Element
   icon?: React.ReactNode
   selected?: boolean
+  screw?: 'left' | 'right'
 }
 
 export const CircularButton: React.FC<CircularButtonProps> = styled
@@ -15,6 +16,7 @@ export const CircularButton: React.FC<CircularButtonProps> = styled
     color = 'default',
     selected,
     style,
+    screw,
     ...props
   }: CircularButtonProps) => {
     return (
@@ -28,7 +30,9 @@ export const CircularButton: React.FC<CircularButtonProps> = styled
 
           'CircularButton-image': Boolean(image),
 
-          'CircularButton-selected': selected
+          'CircularButton-selected': selected,
+
+          'CircularButton-screw-right': screw === 'right',
         })}
         style={{
           ...style,
@@ -40,6 +44,8 @@ export const CircularButton: React.FC<CircularButtonProps> = styled
     )
   })
   (({ theme }) => {
+    const isStyleOne = Math.random() < 0.5
+
     const baseStyles = `
       position: relative;
       display: flex;
@@ -52,7 +58,13 @@ export const CircularButton: React.FC<CircularButtonProps> = styled
       border: none;
       border-radius: 100%;
       &:hover, &:focus, &.CircularButton-selected {
-        border-radius: 1rem;
+        border-radius: 0.5rem 1.2rem 0.5rem 1.2rem;
+      }
+
+      &.CircularButton-screw-right {
+        &:hover, &:focus, &.CircularButton-selected {
+          border-radius: 1.2rem 0.5rem 1.2rem 0.5rem;
+        }
       }
     `
 

@@ -6,12 +6,20 @@ directive @specifiedBy(
 
 type Account implements Node {
   id: ID!
+  profile: Profile
   username: String!
 }
 
 type BaseError implements Error {
   message: String!
 }
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
 
 interface Error {
   message: String!
@@ -31,7 +39,13 @@ type Mutation {
   authorizeAuthSession(id: ID!): Boolean!
   createAuthSession: String!
   login(input: LoginInput!): MutationLoginResult!
+  profileCreate(input: ProfileCreateInput!): MutationProfileCreateResult!
+  profileUpdate(input: ProfileUpdateInput!): MutationProfileUpdateResult!
   signup(input: SignupInput!): MutationSignupResult!
+  taskCreate(input: TaskCreateInput!): MutationTaskCreateResult!
+  taskDelete(input: TaskDeleteInput!): MutationTaskDeleteResult!
+  taskDone(input: TaskDoneInput!): MutationTaskDoneResult!
+  taskUndone(input: TaskUndoneInput!): MutationTaskUndoneResult!
 }
 
 union MutationLoginResult = MutationLoginSuccess | WrongCredentialsError
@@ -40,14 +54,94 @@ type MutationLoginSuccess {
   data: LoginPayload!
 }
 
+union MutationProfileCreateResult = BaseError | MutationProfileCreateSuccess
+
+type MutationProfileCreateSuccess {
+  data: ProfileCreatePayload!
+}
+
+union MutationProfileUpdateResult = BaseError | MutationProfileUpdateSuccess
+
+type MutationProfileUpdateSuccess {
+  data: ProfileUpdatePayload!
+}
+
 union MutationSignupResult = MutationSignupSuccess | UserExistError
 
 type MutationSignupSuccess {
   data: SignupPayload!
 }
 
+union MutationTaskCreateResult = BaseError | MutationTaskCreateSuccess
+
+type MutationTaskCreateSuccess {
+  data: TaskCreatePayload!
+}
+
+union MutationTaskDeleteResult = BaseError | MutationTaskDeleteSuccess
+
+type MutationTaskDeleteSuccess {
+  data: TaskDeletePayload!
+}
+
+union MutationTaskDoneResult = BaseError | MutationTaskDoneSuccess
+
+type MutationTaskDoneSuccess {
+  data: TaskDonePayload!
+}
+
+union MutationTaskUndoneResult = BaseError | MutationTaskUndoneSuccess
+
+type MutationTaskUndoneSuccess {
+  data: TaskUndonePayload!
+}
+
 interface Node {
   id: ID!
+}
+
+type PageInfo {
+  endCursor: ID
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: ID
+}
+
+type Profile implements Node {
+  accountId: String!
+  avatar: String!
+  createdAt: DateTime!
+  description: String
+  dob: DateTime!
+  id: ID!
+  name: String!
+  title: String
+  updatedAt: DateTime!
+}
+
+input ProfileCreateInput {
+  avatar: String!
+  description: String
+  dob: DateTime!
+  name: String!
+  title: String
+}
+
+type ProfileCreatePayload {
+  account: Account!
+  profile: Profile!
+}
+
+input ProfileUpdateInput {
+  avatar: String
+  description: String
+  dob: DateTime
+  name: String
+  title: String
+}
+
+type ProfileUpdatePayload {
+  profile: Profile!
 }
 
 type Query {
@@ -55,6 +149,17 @@ type Query {
   me: Account
   node(id: ID!): Node
   nodes(ids: [ID!]!): [Node]!
+  tasks(after: ID, before: ID, first: Int, last: Int): QueryTasksConnection!
+}
+
+type QueryTasksConnection {
+  edges: [QueryTasksConnectionEdge]!
+  pageInfo: PageInfo!
+}
+
+type QueryTasksConnectionEdge {
+  cursor: ID!
+  node: Task!
 }
 
 input SignupInput {
@@ -69,6 +174,44 @@ type SignupPayload {
 
 type Subscription {
   authSession(id: ID!): String!
+}
+
+type Task implements Node {
+  content: String!
+  id: ID!
+  isDone: Boolean!
+}
+
+input TaskCreateInput {
+  content: String!
+}
+
+type TaskCreatePayload {
+  task: Task!
+}
+
+input TaskDeleteInput {
+  id: ID!
+}
+
+type TaskDeletePayload {
+  task: Task!
+}
+
+input TaskDoneInput {
+  id: ID!
+}
+
+type TaskDonePayload {
+  task: Task!
+}
+
+input TaskUndoneInput {
+  id: ID!
+}
+
+type TaskUndonePayload {
+  task: Task!
 }
 
 type UserExistError implements Error {

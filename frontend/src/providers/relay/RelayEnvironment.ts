@@ -7,10 +7,13 @@ import {
 import { fetchFn } from './fetchFn'
 import { subscribeFn } from './subscribeFn'
 
+export const source = new RecordSource()
+const store = new Store(source)
+
 function createRelayEnvironment() {
   return new Environment({
     network: Network.create(fetchFn, subscribeFn),
-    store: new Store(new RecordSource()),
+    store,
   })
 }
 

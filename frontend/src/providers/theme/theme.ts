@@ -49,6 +49,13 @@ export const theme = createTheme({
           color: defaultTheme.palette.grey[500],
         }
       }
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+        }
+      }
     }
   },
 })
