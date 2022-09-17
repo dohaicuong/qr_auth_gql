@@ -9,13 +9,15 @@ import { animated, useTransition } from 'react-spring'
 
 import { AuthedAppLayout } from './layouts/AuthedAppLayout'
 import { UnauthedAppLayout } from './layouts/UnauthedAppLayout'
+import TaskDocketListPage from './pages/task_docket_list'
+import TaskListPage from './pages/task_list'
 
 const LoginPage = lazy(() => import('./pages/auth_login'))
 const SignupPage = lazy(() => import('./pages/auth_signup'))
 
 const HomePage = lazy(() => import('./pages/home'))
 const QRScanPage = lazy(() => import('./pages/qr_scan'))
-const TodoListPage = lazy(() => import('./pages/todo_list'))
+const TodoListPage = lazy(() => import('./pages/task_list'))
 
 export const AppRoot = () => (
   <RelayProvider>
@@ -45,7 +47,9 @@ const Routing = () => {
             <Route path='/' element={<AuthedAppLayout unauthed_redirect_to='/auth' />}>
               <Route index element={<HomePage />} />
               <Route path='qr-scan' element={<QRScanPage />} />
-              <Route path='tasks' element={<TodoListPage />} />
+              <Route path='task-docket' element={<TaskDocketListPage />}>
+                <Route path=':id' element={<TaskListPage />} />
+              </Route>
             </Route>
             <Route path='/auth' element={<UnauthedAppLayout authed_redirect_to='/' />}>
               <Route index element={<LoginPage />} />

@@ -7,7 +7,18 @@ directive @specifiedBy(
 type Account implements Node {
   id: ID!
   profile: Profile
+  taskDockets(after: ID, before: ID, first: Int, last: Int): AccountTaskDocketsConnection!
   username: String!
+}
+
+type AccountTaskDocketsConnection {
+  edges: [AccountTaskDocketsConnectionEdge]!
+  pageInfo: PageInfo!
+}
+
+type AccountTaskDocketsConnectionEdge {
+  cursor: ID!
+  node: TaskDocket!
 }
 
 type BaseError implements Error {
@@ -44,6 +55,8 @@ type Mutation {
   signup(input: SignupInput!): MutationSignupResult!
   taskCreate(input: TaskCreateInput!): MutationTaskCreateResult!
   taskDelete(input: TaskDeleteInput!): MutationTaskDeleteResult!
+  taskDocketCreate(input: TaskDocketCreateInput!): MutationTaskDocketCreateResult!
+  taskDocketDelete(input: TaskDocketDeleteInput!): MutationTaskDocketDeleteResult!
   taskDone(input: TaskDoneInput!): MutationTaskDoneResult!
   taskUndone(input: TaskUndoneInput!): MutationTaskUndoneResult!
 }
@@ -82,6 +95,18 @@ union MutationTaskDeleteResult = BaseError | MutationTaskDeleteSuccess
 
 type MutationTaskDeleteSuccess {
   data: TaskDeletePayload!
+}
+
+union MutationTaskDocketCreateResult = BaseError | MutationTaskDocketCreateSuccess
+
+type MutationTaskDocketCreateSuccess {
+  data: TaskDocketCreatePayload!
+}
+
+union MutationTaskDocketDeleteResult = BaseError | MutationTaskDocketDeleteSuccess
+
+type MutationTaskDocketDeleteSuccess {
+  data: TaskDocketDeletePayload!
 }
 
 union MutationTaskDoneResult = BaseError | MutationTaskDoneSuccess
@@ -196,6 +221,30 @@ input TaskDeleteInput {
 
 type TaskDeletePayload {
   task: Task!
+}
+
+type TaskDocket implements Node {
+  account: Account!
+  accountId: String!
+  id: ID!
+  name: String!
+  task: [Task!]!
+}
+
+input TaskDocketCreateInput {
+  name: String!
+}
+
+type TaskDocketCreatePayload {
+  taskDocket: TaskDocket!
+}
+
+input TaskDocketDeleteInput {
+  id: ID!
+}
+
+type TaskDocketDeletePayload {
+  taskList: TaskDocket!
 }
 
 input TaskDoneInput {

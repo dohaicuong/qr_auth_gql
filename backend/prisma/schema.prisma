@@ -17,7 +17,7 @@ model Account {
   password String
 
   profile   Profile?
-  taskLists TaskList[]
+  taskDockets TaskDocket[]
 }
 
 model Profile {
@@ -35,14 +35,14 @@ model Profile {
   accountId String  @unique
 }
 
-model TaskList {
+model TaskDocket {
   id   String @id @default(uuid())
   name String
 
   tasks Task[]
 
   account   Account @relation(fields: [accountId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  accountId String  @unique
+  accountId String
 }
 
 model Task {
@@ -50,6 +50,6 @@ model Task {
   content String
   isDone  Boolean @default(false)
 
-  taskList   TaskList? @relation(fields: [taskListId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  taskListId String?
+  taskDocket   TaskDocket? @relation(fields: [taskDocketId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  taskDocketId String?
 }

@@ -21,6 +21,6 @@ import './AuthSession'
 import './Account'
 
 import './Task'
-import './TaskList'
+import './TaskDocket'
 
 export const schema = builder.toSchema()

@@ -6,6 +6,11 @@ export const Account = builder.prismaNode('Account', {
   fields: t => ({
     username: t.exposeString('username'),
 
-    profile: t.relation('profile', { nullable: true })
+    profile: t.relation('profile', { nullable: true }),
+    
+    taskDockets: t.relatedConnection(
+      'taskDockets',
+      { cursor: 'id' },
+    ),
   })
 })

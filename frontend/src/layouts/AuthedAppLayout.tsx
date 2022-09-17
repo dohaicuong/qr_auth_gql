@@ -8,7 +8,7 @@ import { Fragment, useMemo } from 'react'
 
 const nav_items: Omit<NavItemProps, 'index'>[] = [
   { to: '/', icon: <Home />, divided: true },
-  { to: '/tasks', icon: <List />, title: 'Todo list', color: 'primary' },
+  { to: '/task-docket', icon: <List />, title: 'Todo list', color: 'primary' },
   { to: '/qr-scan', icon: <QrCode />, title: 'login with qr code', color: 'secondary' },
 ]
 
@@ -24,8 +24,13 @@ export const AuthedAppLayout: React.FC<AuthedAppLayoutProps> = ({ unauthed_redir
 
   return (
     <Grid container sx={{ height: '100vh' }}>
-      <Grid item sx={{ width: 72 }} container justifyContent='center' mt={2}>
-        <Stack spacing={1}>
+      <Grid
+        item
+        sx={{ width: 72, bgcolor: 'hsl(216,calc(var(--saturation-factor, 1)*7.2%),13.5%)' }}
+        container
+        justifyContent='center'
+      >
+        <Stack spacing={1} mt={2}>
           {nav_items.map((props, index) => (
             <NavItem
               key={props.to}
@@ -35,7 +40,7 @@ export const AuthedAppLayout: React.FC<AuthedAppLayoutProps> = ({ unauthed_redir
           ))}
         </Stack>
       </Grid>
-      <Grid item xs sx={theme => ({ background: theme.palette.grey[900] })}>
+      <Grid item xs sx={{ bgcolor: 'hsl(223,calc(var(--saturation-factor, 1)*6.9%),19.8%)' }}>
         <Outlet />
       </Grid>
     </Grid>

@@ -1,9 +1,9 @@
 import { builder } from '../builder'
 import { prisma } from '../../clients/prisma'
-import { TaskList } from './model_task_list'
+import { TaskDocket } from './model_task_docket'
 
 builder.relayMutationField(
-  'taskListCreate',
+  'taskDocketCreate',
   {
     inputFields: t => ({
       name: t.string({ required: true }),
@@ -14,7 +14,7 @@ builder.relayMutationField(
     resolve: (_, { input: { name } }, { accountId }) => {
       if (!accountId) throw new Error('Please log in!')
 
-      return prisma.taskList.create({
+      return prisma.taskDocket.create({
         data: {
           name,
           accountId,
@@ -24,8 +24,8 @@ builder.relayMutationField(
   },
   {
     outputFields: t => ({
-      taskList: t.field({
-        type: TaskList,
+      taskDocket: t.field({
+        type: TaskDocket,
         resolve: node => node,
       })
     })

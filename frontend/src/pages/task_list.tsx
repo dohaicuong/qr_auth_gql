@@ -1,13 +1,12 @@
-import { TaskCreateField } from '@/features/todo/TaskCreateField'
 import TaskList from '@/features/todo/TaskList'
 import { Container } from '@mui/material'
 import { graphql, useLazyLoadQuery } from 'react-relay'
-import { todoListQuery } from './__generated__/todoListQuery.graphql'
+import { taskListQuery } from './__generated__/taskListQuery.graphql'
 
-const TodoListPage = () => {
-  const data = useLazyLoadQuery<todoListQuery>(
+const TaskListPage = () => {
+  const data = useLazyLoadQuery<taskListQuery>(
     graphql`
-      query todoListQuery {
+      query taskListQuery {
         ...TaskList_query
       }
     `,
@@ -21,4 +20,4 @@ const TodoListPage = () => {
   )
 }
 
-export default TodoListPage
+export default TaskListPage

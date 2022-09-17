@@ -1,12 +1,12 @@
 import { builder } from '../builder'
 
-export const TaskList = builder.prismaNode('TaskList', {
+export const TaskDocket = builder.prismaNode('TaskDocket', {
   findUnique: id => ({ id }),
   id: { resolve: task => task.id },
   fields: t => ({
     name: t.exposeString('name'),
 
-    task: t.relation('tasks'),
+    tasks: t.relatedConnection('tasks', { cursor: 'id' }),
 
     account: t.relation('account'),
     accountId: t.exposeString('accountId'),
