@@ -1,4 +1,9 @@
+import { Add } from '@mui/icons-material'
+import { Divider, IconButton, List, ListItem, ListItemButton, ListItemSecondaryAction } from '@mui/material'
+import { useState } from 'react'
 import { graphql, usePaginationFragment } from 'react-relay'
+import { TaskDocketListItem } from '../TaskDocketListItem'
+import { TaskDocketCreateDialog } from './TaskDocketCreateDialog'
 import { TaskDocketListPaginationQuery } from './__generated__/TaskDocketListPaginationQuery.graphql'
 import { TaskDocketList_me$key } from './__generated__/TaskDocketList_me.graphql'
 
@@ -26,10 +31,11 @@ export const TaskDocketList: React.FC<TaskDocketListProps> = ({ accountRef }) =>
           key: "TaskDocketList_me_taskDockets"
         )
         {
+          __id
           edges {
             node {
               id
-              name
+              ...TaskDocketListItem_taskDocket
             }
           }
         }
@@ -37,11 +43,29 @@ export const TaskDocketList: React.FC<TaskDocketListProps> = ({ accountRef }) =>
     `,
     accountRef
   )
-  console.log(data)
+
+  const [createDocketOpen, setCreateDocketOpen] = useState(false)
 
   return (
-    <>
-      task docket list
-    </>
+    <List>
+      <ListItem sx={{ marginY: 2 }}>
+        <ListItemSecondaryAction>
+          <IconButton onClick={() => setCreateDocketOpen(true)}>
+            <Add />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <TaskDocketCreateDialog
+        open={createDocketOpen}
+        onClose={() => setCreateDocketOpen(false)}
+        connectionId={data.taskDockets.__id}
+      />
+      <Divider />
+      {data.taskDockets.edges.map(edge => {
+        if (!edge?.node) return
+
+        return <TaskDocketListItem taskDocketRef={edge.node} key={edge.node.id} />
+      })}
+    </List>
   )
 }

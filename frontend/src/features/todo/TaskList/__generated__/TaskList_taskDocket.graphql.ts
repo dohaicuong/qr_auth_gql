@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<299f2275bd9da68dc5fd64808eee45da>>
+ * @generated SignedSource<<0f47052de2fee24a95bc07309c14ba3d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,29 +10,29 @@
 
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type TaskDocketList_me$data = {
+export type TaskList_taskDocket$data = {
   readonly id: string;
-  readonly taskDockets: {
+  readonly tasks: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly id: string;
-        readonly " $fragmentSpreads": FragmentRefs<"TaskDocketListItem_taskDocket">;
+        readonly " $fragmentSpreads": FragmentRefs<"TaskListItem_task">;
       };
     } | null>;
   };
-  readonly " $fragmentType": "TaskDocketList_me";
+  readonly " $fragmentType": "TaskList_taskDocket";
 };
-export type TaskDocketList_me$key = {
-  readonly " $data"?: TaskDocketList_me$data;
-  readonly " $fragmentSpreads": FragmentRefs<"TaskDocketList_me">;
+export type TaskList_taskDocket$key = {
+  readonly " $data"?: TaskList_taskDocket$data;
+  readonly " $fragmentSpreads": FragmentRefs<"TaskList_taskDocket">;
 };
 
-import TaskDocketListPaginationQuery_graphql from './TaskDocketListPaginationQuery.graphql';
+import TaskListPaginationQuery_graphql from './TaskListPaginationQuery.graphql';
 
 const node: ReaderFragment = (function(){
 var v0 = [
-  "taskDockets"
+  "tasks"
 ],
 v1 = {
   "alias": null,
@@ -76,24 +76,24 @@ return {
       "fragmentPathInResult": [
         "node"
       ],
-      "operation": TaskDocketListPaginationQuery_graphql,
+      "operation": TaskListPaginationQuery_graphql,
       "identifierField": "id"
     }
   },
-  "name": "TaskDocketList_me",
+  "name": "TaskList_taskDocket",
   "selections": [
     {
-      "alias": "taskDockets",
+      "alias": "tasks",
       "args": null,
-      "concreteType": "AccountTaskDocketsConnection",
+      "concreteType": "TaskDocketTasksConnection",
       "kind": "LinkedField",
-      "name": "__TaskDocketList_me_taskDockets_connection",
+      "name": "__TaskList_taskDocket_tasks_connection",
       "plural": false,
       "selections": [
         {
           "alias": null,
           "args": null,
-          "concreteType": "AccountTaskDocketsConnectionEdge",
+          "concreteType": "TaskDocketTasksConnectionEdge",
           "kind": "LinkedField",
           "name": "edges",
           "plural": true,
@@ -101,7 +101,7 @@ return {
             {
               "alias": null,
               "args": null,
-              "concreteType": "TaskDocket",
+              "concreteType": "Task",
               "kind": "LinkedField",
               "name": "node",
               "plural": false,
@@ -110,7 +110,7 @@ return {
                 {
                   "args": null,
                   "kind": "FragmentSpread",
-                  "name": "TaskDocketListItem_taskDocket"
+                  "name": "TaskListItem_task"
                 },
                 {
                   "alias": null,
@@ -174,11 +174,11 @@ return {
     },
     (v1/*: any*/)
   ],
-  "type": "Account",
+  "type": "TaskDocket",
   "abstractKey": null
 };
 })();
 
-(node as any).hash = "750845f98fde4c65d46043cefa752e82";
+(node as any).hash = "c6786758228c5ce96d2d03f114a7bf4a";
 
 export default node;

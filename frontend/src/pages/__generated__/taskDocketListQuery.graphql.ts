@@ -1,6 +1,6 @@
 /**
- * @generated SignedSource<<ddb9a92a679f7df7e640206a4a77ac40>>
- * @relayHash fd5aceecd795db4f4d6534087e566ae5
+ * @generated SignedSource<<ca37f238c879029a9991bba99c89f27f>>
+ * @relayHash 06dd9cc670fe6056fc3a868cf783e47c
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-// @relayRequestID fd5aceecd795db4f4d6534087e566ae5
+// @relayRequestID 06dd9cc670fe6056fc3a868cf783e47c
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
@@ -156,6 +156,18 @@ return {
                   }
                 ],
                 "storageKey": null
+              },
+              {
+                "kind": "ClientExtension",
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "__id",
+                    "storageKey": null
+                  }
+                ]
               }
             ],
             "storageKey": "taskDockets(first:5)"
@@ -176,7 +188,7 @@ return {
     ]
   },
   "params": {
-    "id": "fd5aceecd795db4f4d6534087e566ae5",
+    "id": "06dd9cc670fe6056fc3a868cf783e47c",
     "metadata": {},
     "name": "taskDocketListQuery",
     "operationKind": "query",

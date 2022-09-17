@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "relay-compiler --validate && tsc && vite build",
     "preview": "vite preview",
-    "schema": "get-graphql-schema http://localhost:4000/graphql > ./data/schema.graphql",
+    "schema": "get-graphql-schema http://0.0.0.0:4000/graphql > ./data/schema.graphql",
     "relay": "relay-compiler && pnpm mod:resolvers",
     "mod:resolvers": "node ./scripts/resolver_import_artifact.js"
   },

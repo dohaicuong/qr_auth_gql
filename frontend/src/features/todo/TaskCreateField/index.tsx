@@ -7,9 +7,10 @@ import { TaskCreateInput } from './__generated__/useTaskCreateMutation.graphql'
 
 type TaskCreateFieldProps = {
   taskConnectionId: string
+  taskDocketId: string
 }
 
-export const TaskCreateField: React.FC<TaskCreateFieldProps> = ({ taskConnectionId }) => {
+export const TaskCreateField: React.FC<TaskCreateFieldProps> = ({ taskConnectionId, taskDocketId }) => {
   const [taskCreateMutate, taskCreating] = useTaskCreate()
 
   const ref = useRef<HTMLInputElement>()
@@ -22,6 +23,7 @@ export const TaskCreateField: React.FC<TaskCreateFieldProps> = ({ taskConnection
       variables: {
         connections: [taskConnectionId],
         input: {
+          taskDocketId,
           content: input.content,
         }
       },

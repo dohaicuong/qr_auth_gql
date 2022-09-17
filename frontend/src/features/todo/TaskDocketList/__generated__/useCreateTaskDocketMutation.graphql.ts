@@ -1,6 +1,6 @@
 /**
- * @generated SignedSource<<4b24ca0e7b958d6242354f30e669b265>>
- * @relayHash d6d75960de94e87f83fc8629479a7ebe
+ * @generated SignedSource<<9fba9d777de99defae6975b1cd5b6328>>
+ * @relayHash 7495df551b0da5f153210c17652edb0c
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,30 +9,29 @@
 /* eslint-disable */
 // @ts-nocheck
 
-// @relayRequestID d6d75960de94e87f83fc8629479a7ebe
+// @relayRequestID 7495df551b0da5f153210c17652edb0c
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type TaskCreateInput = {
-  content: string;
-  taskDocketId: string;
+export type TaskDocketCreateInput = {
+  name: string;
 };
-export type useTaskCreateMutation$variables = {
+export type useCreateTaskDocketMutation$variables = {
   connections: ReadonlyArray<string>;
-  input: TaskCreateInput;
+  input: TaskDocketCreateInput;
 };
-export type useTaskCreateMutation$data = {
-  readonly taskCreate: {
+export type useCreateTaskDocketMutation$data = {
+  readonly taskDocketCreate: {
     readonly data?: {
-      readonly task: {
-        readonly " $fragmentSpreads": FragmentRefs<"TaskListItem_task">;
+      readonly taskDocket: {
+        readonly " $fragmentSpreads": FragmentRefs<"TaskDocketListItem_taskDocket">;
       };
     };
   };
 };
-export type useTaskCreateMutation = {
-  response: useTaskCreateMutation$data;
-  variables: useTaskCreateMutation$variables;
+export type useCreateTaskDocketMutation = {
+  response: useCreateTaskDocketMutation$data;
+  variables: useCreateTaskDocketMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -61,14 +60,14 @@ return {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "useTaskCreateMutation",
+    "name": "useCreateTaskDocketMutation",
     "selections": [
       {
         "alias": null,
         "args": (v2/*: any*/),
         "concreteType": null,
         "kind": "LinkedField",
-        "name": "taskCreate",
+        "name": "taskDocketCreate",
         "plural": false,
         "selections": [
           {
@@ -77,7 +76,7 @@ return {
               {
                 "alias": null,
                 "args": null,
-                "concreteType": "TaskCreatePayload",
+                "concreteType": "TaskDocketCreatePayload",
                 "kind": "LinkedField",
                 "name": "data",
                 "plural": false,
@@ -85,15 +84,15 @@ return {
                   {
                     "alias": null,
                     "args": null,
-                    "concreteType": "Task",
+                    "concreteType": "TaskDocket",
                     "kind": "LinkedField",
-                    "name": "task",
+                    "name": "taskDocket",
                     "plural": false,
                     "selections": [
                       {
                         "args": null,
                         "kind": "FragmentSpread",
-                        "name": "TaskListItem_task"
+                        "name": "TaskDocketListItem_taskDocket"
                       }
                     ],
                     "storageKey": null
@@ -102,7 +101,7 @@ return {
                 "storageKey": null
               }
             ],
-            "type": "MutationTaskCreateSuccess",
+            "type": "MutationTaskDocketCreateSuccess",
             "abstractKey": null
           }
         ],
@@ -119,14 +118,14 @@ return {
       (v0/*: any*/)
     ],
     "kind": "Operation",
-    "name": "useTaskCreateMutation",
+    "name": "useCreateTaskDocketMutation",
     "selections": [
       {
         "alias": null,
         "args": (v2/*: any*/),
         "concreteType": null,
         "kind": "LinkedField",
-        "name": "taskCreate",
+        "name": "taskDocketCreate",
         "plural": false,
         "selections": [
           {
@@ -142,7 +141,7 @@ return {
               {
                 "alias": null,
                 "args": null,
-                "concreteType": "TaskCreatePayload",
+                "concreteType": "TaskDocketCreatePayload",
                 "kind": "LinkedField",
                 "name": "data",
                 "plural": false,
@@ -150,9 +149,9 @@ return {
                   {
                     "alias": null,
                     "args": null,
-                    "concreteType": "Task",
+                    "concreteType": "TaskDocket",
                     "kind": "LinkedField",
-                    "name": "task",
+                    "name": "taskDocket",
                     "plural": false,
                     "selections": [
                       {
@@ -166,14 +165,7 @@ return {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
-                        "name": "content",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "isDone",
+                        "name": "name",
                         "storageKey": null
                       }
                     ],
@@ -186,7 +178,7 @@ return {
                     "handle": "appendNode",
                     "key": "",
                     "kind": "LinkedHandle",
-                    "name": "task",
+                    "name": "taskDocket",
                     "handleArgs": [
                       {
                         "kind": "Variable",
@@ -196,7 +188,7 @@ return {
                       {
                         "kind": "Literal",
                         "name": "edgeTypeName",
-                        "value": "QueryTasksConnectionEdge"
+                        "value": "AccountTaskDocketsConnectionEdge"
                       }
                     ]
                   }
@@ -204,7 +196,7 @@ return {
                 "storageKey": null
               }
             ],
-            "type": "MutationTaskCreateSuccess",
+            "type": "MutationTaskDocketCreateSuccess",
             "abstractKey": null
           }
         ],
@@ -213,15 +205,15 @@ return {
     ]
   },
   "params": {
-    "id": "d6d75960de94e87f83fc8629479a7ebe",
+    "id": "7495df551b0da5f153210c17652edb0c",
     "metadata": {},
-    "name": "useTaskCreateMutation",
+    "name": "useCreateTaskDocketMutation",
     "operationKind": "mutation",
     "text": null
   }
 };
 })();
 
-(node as any).hash = "63cf3911518895da72cd29932a5a5cc8";
+(node as any).hash = "b95ee6f72229b425d7dc606e8bf41daf";
 
 export default node;

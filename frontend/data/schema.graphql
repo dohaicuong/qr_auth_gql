@@ -174,17 +174,6 @@ type Query {
   me: Account
   node(id: ID!): Node
   nodes(ids: [ID!]!): [Node]!
-  tasks(after: ID, before: ID, first: Int, last: Int): QueryTasksConnection!
-}
-
-type QueryTasksConnection {
-  edges: [QueryTasksConnectionEdge]!
-  pageInfo: PageInfo!
-}
-
-type QueryTasksConnectionEdge {
-  cursor: ID!
-  node: Task!
 }
 
 input SignupInput {
@@ -209,6 +198,7 @@ type Task implements Node {
 
 input TaskCreateInput {
   content: String!
+  taskDocketId: ID!
 }
 
 type TaskCreatePayload {
@@ -228,7 +218,7 @@ type TaskDocket implements Node {
   accountId: String!
   id: ID!
   name: String!
-  task: [Task!]!
+  tasks(after: ID, before: ID, first: Int, last: Int): TaskDocketTasksConnection!
 }
 
 input TaskDocketCreateInput {
@@ -244,7 +234,17 @@ input TaskDocketDeleteInput {
 }
 
 type TaskDocketDeletePayload {
-  taskList: TaskDocket!
+  taskDocket: TaskDocket!
+}
+
+type TaskDocketTasksConnection {
+  edges: [TaskDocketTasksConnectionEdge]!
+  pageInfo: PageInfo!
+}
+
+type TaskDocketTasksConnectionEdge {
+  cursor: ID!
+  node: Task!
 }
 
 input TaskDoneInput {

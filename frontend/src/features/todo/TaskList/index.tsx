@@ -3,21 +3,22 @@ import { graphql, usePaginationFragment } from 'react-relay'
 import { TaskCreateField } from '../TaskCreateField'
 import { TaskListItem } from '../TaskListItem'
 import { TaskListPaginationQuery } from './__generated__/TaskListPaginationQuery.graphql'
-import { TaskList_query$key } from './__generated__/TaskList_query.graphql'
+import { TaskList_taskDocket$key } from './__generated__/TaskList_taskDocket.graphql'
 
 type TaskListProps = {
-  queryRef: TaskList_query$key
+  queryRef: TaskList_taskDocket$key
+  taskDocketId: string
 }
 
-const TaskList: React.FC<TaskListProps> = ({ queryRef }) => {
+const TaskList: React.FC<TaskListProps> = ({ queryRef, taskDocketId }) => {
   const {
     data,
     hasNext,
     loadNext,
-    isLoadingNext
-  } = usePaginationFragment<TaskListPaginationQuery, TaskList_query$key>(
+    isLoadingNext,
+  } = usePaginationFragment<TaskListPaginationQuery, TaskList_taskDocket$key>(
     graphql`
-      fragment TaskList_query on Query
+      fragment TaskList_taskDocket on TaskDocket
       @refetchable(queryName: "TaskListPaginationQuery")
       @argumentDefinitions(
         count: { type: "Int", defaultValue: 5 }
@@ -28,9 +29,7 @@ const TaskList: React.FC<TaskListProps> = ({ queryRef }) => {
           first: $count
           after: $cursor
         )
-        @connection(
-          key: "TaskList_query_tasks"
-        )
+        @connection(key: "TaskList_taskDocket_tasks")
         {
           __id
           edges {
@@ -47,7 +46,10 @@ const TaskList: React.FC<TaskListProps> = ({ queryRef }) => {
 
   return (
     <Stack spacing={1}>
-      <TaskCreateField taskConnectionId={data.tasks.__id} />
+      <TaskCreateField
+        taskDocketId={taskDocketId}
+        taskConnectionId={data.tasks.__id}
+      />
       <List sx={{ height: 'calc(100vh - 64px - 56px - 8px)', overflow: 'auto' }}>
         {data.tasks.edges.map(edge => {
           if (!edge?.node) return

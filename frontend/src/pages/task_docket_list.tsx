@@ -18,7 +18,13 @@ const TaskDocketListPage = () => {
 
   return (
     <Grid container sx={{ height: '100vh' }}>
-      <Grid item sx={{ width: 150, bgcolor: 'hsl(223,calc(var(--saturation-factor, 1)*6.9%),19.8%)' }} container justifyContent='center'>
+      <Grid
+        item
+        sx={{
+          width: 250,
+          bgcolor: 'hsl(223,calc(var(--saturation-factor, 1)*6.9%),19.8%)'
+        }}
+      >
         <TaskDocketList accountRef={data.me} />
       </Grid>
       <Grid item xs sx={{ background: 'hsl(220,calc(var(--saturation-factor, 1)*7.7%),22.9%)' }}>

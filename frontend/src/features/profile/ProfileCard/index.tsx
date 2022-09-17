@@ -1,6 +1,6 @@
 import { CircularButton } from '@/components/CircularButton'
 import { Edit } from '@mui/icons-material'
-import { Avatar, IconButton, Paper, Stack, TextField, Typography } from '@mui/material'
+import { Avatar, Paper, Stack, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
 import { graphql, useFragment } from 'react-relay'
 import { ProfileEditDialog } from '../ProfileEditDialog'

@@ -24,7 +24,7 @@ builder.relayMutationField(
   },
   {
     outputFields: t => ({
-      taskList: t.field({
+      taskDocket: t.field({
         type: TaskDocket,
         resolve: node => node,
       })

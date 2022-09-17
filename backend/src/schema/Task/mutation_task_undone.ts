@@ -11,7 +11,17 @@ builder.relayMutationField(
   },
   {
     errors: { types: [Error] },
-    resolve: (_, { input: { id: { id } } }) => {
+    resolve: async (_, { input: { id: { id } } }, { accountId }) => {
+      const task = await prisma.task.findUnique({
+        where: {
+          id,
+        },
+        include: {
+          taskDocket: true
+        }
+      })
+      if (task?.taskDocket?.accountId !== accountId) throw new Error('Unable to modify other task')
+
       return prisma.task.update({
         where: { id },
         data: { isDone: false },
