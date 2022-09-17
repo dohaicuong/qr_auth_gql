@@ -16,7 +16,8 @@ model Account {
   username String @unique
   password String
 
-  profile Profile?
+  profile   Profile?
+  taskLists TaskList[]
 }
 
 model Profile {
@@ -34,8 +35,21 @@ model Profile {
   accountId String  @unique
 }
 
+model TaskList {
+  id   String @id @default(uuid())
+  name String
+
+  tasks Task[]
+
+  account   Account @relation(fields: [accountId], references: [id])
+  accountId String  @unique
+}
+
 model Task {
   id      String  @id @default(uuid())
   content String
   isDone  Boolean @default(false)
+
+  taskList   TaskList? @relation(fields: [taskListId], references: [id])
+  taskListId String?
 }
