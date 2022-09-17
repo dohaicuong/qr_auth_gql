@@ -41,7 +41,7 @@ model TaskList {
 
   tasks Task[]
 
-  account   Account @relation(fields: [accountId], references: [id])
+  account   Account @relation(fields: [accountId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   accountId String  @unique
 }
 
@@ -50,6 +50,6 @@ model Task {
   content String
   isDone  Boolean @default(false)
 
-  taskList   TaskList? @relation(fields: [taskListId], references: [id])
+  taskList   TaskList? @relation(fields: [taskListId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   taskListId String?
 }

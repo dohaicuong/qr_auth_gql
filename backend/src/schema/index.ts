@@ -20,6 +20,7 @@ import './Profile'
 import './AuthSession'
 import './Account'
 
-import './Todo'
+import './Task'
+import './TaskList'
 
 export const schema = builder.toSchema()
