@@ -10,6 +10,7 @@ type QrLoginProps = {
 
 export const QrLogin: React.FC<QrLoginProps> = ({ onToken }) => {
   const authSessionId = useCreateAuthSession()
+  console.log({ authSessionId })
 
   const jwtToken = useAuthSessionToken(authSessionId)
   useEffect(() => {

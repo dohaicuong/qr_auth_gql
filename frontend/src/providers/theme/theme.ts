@@ -56,6 +56,13 @@ export const theme = createTheme({
           borderRadius: 8,
         }
       }
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          minWidth: 500
+        }
+      }
     }
   },
 })
