@@ -1,5 +1,6 @@
 import { graphql } from 'relay-runtime'
 import { readFragment } from 'relay-runtime/lib/store/ResolverFragments'
+import { ProfileAgeResolver$key } from './__generated__/ProfileAgeResolver.graphql'
 
 /**
  * @RelayResolver
@@ -10,7 +11,7 @@ import { readFragment } from 'relay-runtime/lib/store/ResolverFragments'
  *
  * profile user age
  */
-export default function ProfileAgeResolver(profileRef: any): number {
+export default function ProfileAgeResolver(profileRef: ProfileAgeResolver$key): number {
   const profile = readFragment(
     graphql`
       fragment ProfileAgeResolver on Profile {
