@@ -1,6 +1,6 @@
 /**
- * @generated SignedSource<<bd91a9b0ff37062cc3052b4b68bfc368>>
- * @relayHash ddb1432a2e6dff71b181710bc5a90024
+ * @generated SignedSource<<217952ca374c62d531d5a0e487efc874>>
+ * @relayHash 7c7a41b910e78a95588355a3afcf8649
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,17 +9,12 @@
 /* eslint-disable */
 // @ts-nocheck
 
-// @relayRequestID ddb1432a2e6dff71b181710bc5a90024
+// @relayRequestID 7c7a41b910e78a95588355a3afcf8649
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-import { FragmentRefs } from "relay-runtime";
 export type homeQuery$variables = {};
 export type homeQuery$data = {
   readonly me: {
-    readonly id: string;
-    readonly profile: {
-      readonly " $fragmentSpreads": FragmentRefs<"ProfileCard_profile">;
-    } | null;
     readonly username: string;
   } | null;
 };
@@ -30,13 +25,6 @@ export type homeQuery = {
 
 const node: ConcreteRequest = (function(){
 var v0 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "id",
-  "storageKey": null
-},
-v1 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -58,24 +46,7 @@ return {
         "name": "me",
         "plural": false,
         "selections": [
-          (v0/*: any*/),
-          (v1/*: any*/),
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "Profile",
-            "kind": "LinkedField",
-            "name": "profile",
-            "plural": false,
-            "selections": [
-              {
-                "args": null,
-                "kind": "FragmentSpread",
-                "name": "ProfileCard_profile"
-              }
-            ],
-            "storageKey": null
-          }
+          (v0/*: any*/)
         ],
         "storageKey": null
       }
@@ -98,52 +69,11 @@ return {
         "plural": false,
         "selections": [
           (v0/*: any*/),
-          (v1/*: any*/),
           {
             "alias": null,
             "args": null,
-            "concreteType": "Profile",
-            "kind": "LinkedField",
-            "name": "profile",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "name",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "avatar",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "title",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "description",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "dob",
-                "storageKey": null
-              },
-              (v0/*: any*/)
-            ],
+            "kind": "ScalarField",
+            "name": "id",
             "storageKey": null
           }
         ],
@@ -152,7 +82,7 @@ return {
     ]
   },
   "params": {
-    "id": "ddb1432a2e6dff71b181710bc5a90024",
+    "id": "7c7a41b910e78a95588355a3afcf8649",
     "metadata": {},
     "name": "homeQuery",
     "operationKind": "query",
@@ -161,7 +91,7 @@ return {
 };
 })();
 
-(node as any).hash = "e52cc776e044b55a16bbeefc6f81bb09";
+(node as any).hash = "7ff00917a0e3611118a026a8c10e121f";
 
 import { PreloadableQueryRegistry } from 'relay-runtime';
 PreloadableQueryRegistry.set(node.params.id, node);

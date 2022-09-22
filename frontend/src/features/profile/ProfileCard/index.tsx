@@ -1,5 +1,6 @@
 import { CircularButton } from '@/components/CircularButton'
-import { Edit } from '@mui/icons-material'
+import { useLogout } from '@/features/auth/useLogout'
+import { Edit, Logout } from '@mui/icons-material'
 import { Avatar, Paper, Stack, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
 import { graphql, useFragment } from 'react-relay'
@@ -26,7 +27,8 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ profileRef }) => {
   )
 
   const [updateDialogOpen, setUpdateDialogOpen] = useState(false)
-
+  const onLogout = useLogout()
+  
   return (
     <Paper
       style={{ marginTop: '60px', position: 'relative' }}
@@ -35,10 +37,18 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ profileRef }) => {
       <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', marginTop: -40 }}>
         <Avatar
           src={profile.avatar}
-          sx={theme => ({ width: 80, height: 80, bgcolor: theme.palette.grey[900] })}
+          sx={theme => ({
+            width: 80,
+            height: 80,
+            bgcolor: theme.palette.grey[900],
+            border: `4px solid ${theme.palette.grey[900]}`
+          })}
         />
       </div>
-      <div style={{ position: 'absolute', top: 10, right: -24 }}>
+      <Stack
+        sx={{ position: 'absolute', top: 10, right: -24 }}
+        spacing={1}
+      >
         <CircularButton
           icon={<Edit />}
           color='primary'
@@ -51,7 +61,15 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ profileRef }) => {
           onClose={() => setUpdateDialogOpen(false)}
           profileRef={profile}
         />
-      </div>
+
+        <CircularButton
+          icon={<Logout />}
+          color='error'
+          screw='left'
+          title='sign out'
+          onClick={onLogout}
+        />
+      </Stack>
       <Stack mt={2} mb={4} spacing={2} paddingX={8}>
         <Typography align='center' variant='h4' fontWeight={600}>
           {profile.name}

@@ -1,13 +1,14 @@
 import { CircularButton, CircularButtonProps } from '@/components/CircularButton'
 import { Divider, Grid, Stack } from '@mui/material'
 import { Link, Navigate, Outlet, useLocation } from 'react-router-dom'
-import { Home, List, QrCode } from '@mui/icons-material'
+import { Home, List, Person, QrCode } from '@mui/icons-material'
 import { Fragment, useMemo } from 'react'
 
 
 
 const nav_items: Omit<NavItemProps, 'index'>[] = [
   { to: '/', icon: <Home />, divided: true },
+  { to: '/profile', icon: <Person />, title: 'Profile', color: 'secondary' },
   { to: '/task-docket', icon: <List />, title: 'Todo list', color: 'primary' },
   { to: '/qr-scan', icon: <QrCode />, title: 'login with qr code', color: 'secondary' },
 ]

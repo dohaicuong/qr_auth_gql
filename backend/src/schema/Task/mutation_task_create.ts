@@ -18,8 +18,6 @@ builder.relayMutationField(
       const taskDocket = await prisma.taskDocket.findUnique({ where: { id: taskDocketId }})
       if (taskDocket?.accountId !== accountId) throw new Error('Unable to create task in other docket!')
 
-      console.log({ taskDocketId })
-
       return prisma.task.create({
         data: {
           taskDocketId,
