@@ -7,6 +7,7 @@ export type CircularButtonProps = React.HtmlHTMLAttributes<HTMLButtonElement> & 
   icon?: React.ReactNode
   selected?: boolean
   screw?: 'left' | 'right'
+  size?: 'small' | 'medium' | 'large'
 }
 
 export const CircularButton: React.FC<CircularButtonProps> = styled
@@ -17,6 +18,7 @@ export const CircularButton: React.FC<CircularButtonProps> = styled
     selected,
     style,
     screw,
+    size = 'small',
     ...props
   }: CircularButtonProps) => {
     return (
@@ -33,6 +35,10 @@ export const CircularButton: React.FC<CircularButtonProps> = styled
           'CircularButton-selected': selected,
 
           'CircularButton-screw-right': screw === 'right',
+
+          'CircularButton-small': size === 'small',
+          'CircularButton-medium': size === 'medium',
+          'CircularButton-large': size === 'large',
         })}
         style={{
           ...style,
@@ -44,26 +50,58 @@ export const CircularButton: React.FC<CircularButtonProps> = styled
     )
   })
   (({ theme }) => {
-    const isStyleOne = Math.random() < 0.5
-
     const baseStyles = `
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 48px;
-      width: 48px;
       cursor: pointer;
-      transition: all 300ms ease-in-out;
       border: none;
       border-radius: 100%;
-      &:hover, &:focus, &.CircularButton-selected {
-        border-radius: 0.5rem 1.2rem 0.5rem 1.2rem;
-      }
+      transition: all 300ms ease-in-out;
+    `
 
-      &.CircularButton-screw-right {
+    const sizeStyles = `
+      &.CircularButton-small {
+        height: 48px;
+        width: 48px;
+
         &:hover, &:focus, &.CircularButton-selected {
-          border-radius: 1.2rem 0.5rem 1.2rem 0.5rem;
+          border-radius: 0.5rem 1.2rem 0.5rem 1.2rem;
+        }
+  
+        &.CircularButton-screw-right {
+          &:hover, &:focus, &.CircularButton-selected {
+            border-radius: 1.2rem 0.5rem 1.2rem 0.5rem;
+          }
+        }
+      }
+      &.CircularButton-medium {
+        height: 64px;
+        width: 64px;
+
+        &:hover, &:focus, &.CircularButton-selected {
+          border-radius: 0.8rem 1.8rem 0.8rem 1.8rem;
+        }
+  
+        &.CircularButton-screw-right {
+          &:hover, &:focus, &.CircularButton-selected {
+            border-radius: 1.8rem 0.8rem 1.8rem 0.8rem;
+          }
+        }
+      }
+      &.CircularButton-large {
+        height: 80px;
+        width: 80px;
+
+        &:hover, &:focus, &.CircularButton-selected {
+          border-radius: 1.2rem 2.4rem 1.2rem 2.4rem;
+        }
+  
+        &.CircularButton-screw-right {
+          &:hover, &:focus, &.CircularButton-selected {
+            border-radius: 1.8rem 0.8rem 1.8rem 0.8rem;
+          }
         }
       }
     `
@@ -134,6 +172,8 @@ export const CircularButton: React.FC<CircularButtonProps> = styled
     return `
       ${baseStyles}
       
+      ${sizeStyles}
+
       ${imageButtonStyles}
       
       ${defaultColorStyles}      
